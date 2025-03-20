@@ -1,0 +1,93 @@
+let nama;
+let angka;
+let pilihan;
+let radio;
+
+function simpanData() {
+    nama = document.getElementById("nama").value.trim(); 
+    angka = parseInt(document.getElementById("angka").value); 
+ let container=document.getElementById("input-container");
+ container.innerHTML=" ";
+    let tombol=document.getElementById("tombol");
+
+    
+
+    if (nama === "" || isNaN(angka) || angka <= 0) {
+        alert("Isi nama dengan benar dan masukkan angka yang valid!");
+
+    } else {
+        alert(nama+" dan "+angka+" Berhasil disimpan");
+
+        for (let i = 0; i < angka; i++) {
+            pilihan = document.createElement("input");
+            pilihan.type = "text";
+            pilihan.placeholder = "Teks pilihan " + (i + 1);
+            pilihan.className="teks-pilihan"
+            container.appendChild(pilihan);
+            container.appendChild(document.createElement("br"));
+          
+            tombol.style.display="block";
+        }
+
+
+
+    }
+}
+
+  function simpanData2() {
+            let simpanData = document.querySelectorAll(".teks-pilihan");
+            let menu = document.getElementById("radio-container");
+            let jumlah = simpanData.length;
+
+            let teksPilihan = {
+                pilihan: []
+            };
+
+            simpanData.forEach((input) => {
+                teksPilihan.pilihan.push(input.value);
+            });
+
+            alert(`${teksPilihan.pilihan.join(", ")} berhasil disimpan`);
+
+
+            menu.innerHTML = "";
+
+            for (let i = 0; i < jumlah; i++) {
+                radio = document.createElement("input");
+                radio.type = "radio";
+                radio.name = "pilihan";
+                radio.className="radioPil"
+                radio.value = teksPilihan.pilihan[i];
+
+                let label = document.createElement("label");
+                label.textContent = teksPilihan.pilihan[i];
+
+                menu.appendChild(radio);
+                menu.appendChild(label);
+                menu.appendChild(document.createElement("br"));
+                radioButton.style.display="block";
+            }
+        }
+
+function simpandData3() {
+            let simpanData4 = document.querySelectorAll('input[name="pilihan"]');
+            let selected = "";
+            let listPilihan=[];
+        
+            simpanData4.forEach((radio) => {
+                if (radio.checked) {  
+                    selected = radio.value;  
+                }
+            });
+
+            let inputPilihan=document.querySelectorAll(".teks-pilihan");
+            inputPilihan.forEach((input)=>{
+                listPilihan.push(input.value);
+            });
+        
+            let keluaran = document.getElementById("hasil");
+            keluaran.innerText = selected 
+                ? `Hallo, nama saya ${nama}, saya mempunyai sejumlah ${angka} pilihan yaitu ${listPilihan.join(", ")} dan saya memilih ${selected}.`
+                : "Belum ada pilihan yang dipilih!";
+ }
+        
