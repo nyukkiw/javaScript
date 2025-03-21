@@ -8,6 +8,7 @@ body{
  display: flex;
  align-items: stretch;
  justify-content: stretch;
+ color: white;
  width: 600px;
  height: 800px;
  background-color: rgb(34, 8, 34);
@@ -27,6 +28,7 @@ body{
   margin: auto;
   padding: 1rem;
   text-align: center;
+ 
    
 }
 .label-nama{
